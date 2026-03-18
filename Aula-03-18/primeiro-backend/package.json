@@ -1,0 +1,25 @@
+{
+  "name": "dw3_2026",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/10mara/DW3_2026#readme",
+  "bugs": {
+    "url": "https://github.com/10mara/DW3_2026/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/10mara/DW3_2026.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": " node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "fastify": "^5.8.2"
+  }
+}
