@@ -1,0 +1,67 @@
+### Trazer Tudo O Que Existe:
+GET http://localhost:3000/tarefas
+### Criar uma nova tarefa
+POST http://localhost:3000/tarefas
+Content-Type: application/json
+
+{
+    "descricao": "Tarefa 4",
+    "concluido": false
+}
+
+### Buscar detalhes de uma tarefa específica pelo ID
+GET http://localhost:3000/tarefas/1
+
+### Testar a rota de listagem filtrando apenas tarefas não concluídas:
+GET http://localhost:3000/tarefas?concluido=false
+
+### Atualizar a descrição e marcar como concluída de uma tarefa específica pelo ID
+PATCH http://localhost:3000/tarefas/1
+Content-Type: application/json
+
+{
+    "descricao": "Fazer compras no mercado noturno e limpar o pátio",
+    "concluido": true
+}
+
+### Excluir uma tarefa específica pelo ID
+DELETE http://localhost:3000/tarefas/1
+
+### Testando rota que não existe para acionar nosso Handler Customizado
+GET http://localhost:3000/batata-frita
+
+
+### tudo
+GET http://localhost:3000/tarefas
+
+### busca
+GET http://localhost:3000/tarefas?busca=carro
+
+### concluido
+GET http://localhost:3000/tarefas?concluido=true
+
+### combinado
+GET http://localhost:3000/tarefas?busca=fastify&concluido=false
+
+### filtro texto
+GET http://localhost:3000/tarefas?busca=carro
+
+### filtro status
+GET http://localhost:3000/tarefas?concluido=true
+
+### combinado
+GET http://localhost:3000/tarefas?busca=fastify&concluido=false
+
+### validação POST (erro)
+POST http://localhost:3000/tarefas
+Content-Type: application/json
+
+{
+  "concluido": false
+}
+
+### toggle
+PATCH http://localhost:3000/tarefas/1/concluir
+
+### resumo
+GET http://localhost:3000/tarefas/resumo
