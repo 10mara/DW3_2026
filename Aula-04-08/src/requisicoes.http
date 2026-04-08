@@ -1,0 +1,40 @@
+### Listar todas as tarefas
+GET http://localhost:3000/tarefas
+
+### Listar apenas tarefas concluidas
+GET http://localhost:3000/tarefas?concluida=true
+
+### Listar apenas tarefas pendentes
+GET http://localhost:3000/tarefas?concluida=false
+
+### Buscar tarefas por termo
+GET http://localhost:3000/tarefas?busca=node
+
+### Criar nova tarefa
+POST http://localhost:3000/tarefas
+Content-Type: application/json
+
+{
+  "titulo": "Nova tarefa",
+  "descricao": "Descricao da tarefa"
+}
+
+### Obter tarefa por ID
+GET http://localhost:3000/tarefas/1
+
+### Atualizar tarefa
+PATCH http://localhost:3000/tarefas/1
+Content-Type: application/json
+
+{
+  "titulo": "Titulo atualizado"
+}
+
+### Concluir/Desconcluir tarefa
+PATCH http://localhost:3000/tarefas/1/concluir
+
+### Remover tarefa
+DELETE http://localhost:3000/tarefas/1
+
+### Obter resumo
+GET http://localhost:3000/tarefas/resumo
