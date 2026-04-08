@@ -1,23 +1,34 @@
-const fastify = require("fastify")({ logger: true });
-const tarefaRoutes = require("./tarefa.routes");
+import Fastify from 'fastify'
+import cors from '@fastify/cors'
 
-// Registrar as rotas de tarefas
-fastify.register(tarefaRoutes);
+import tarefaRoutes from './routes/tarefa.routes.js'
 
-// Rota raiz
-fastify.get("/", async (request, reply) => {
-  return { mensagem: "API de Tarefas - MVC" };
-});
+const server = Fastify()
 
-// Iniciar o servidor
+server.register(cors, {
+    origin: '*',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS']
+})
+
+// Registra as rotas de tarefas
+server.register(tarefaRoutes)
+
+server.setNotFoundHandler((request, reply) => {
+  reply.code(404).send({
+    status: 'error',
+    message: 'O recurso solicitado não existe nesta API.',
+  })
+})
+
+const PORT = 3000
 const start = async () => {
-  try {
-    await fastify.listen({ port: 3000 });
-    console.log("Servidor rodando em http://localhost:3000");
-  } catch (err) {
-    fastify.log.error(err);
-    process.exit(1);
-  }
-};
+    try {
+        await server.listen({port: PORT})
+        console.log(`Servidor rodando em http://localhost:${PORT}`)
+    } catch (erro) {
+        console.error(erro)
+        process.exit(1)
+    }
+}
 
-start();
+start()

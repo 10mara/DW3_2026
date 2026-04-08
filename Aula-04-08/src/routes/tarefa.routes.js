@@ -1,26 +1,55 @@
-const tarefaController = require("./controller/tarefa.controller.js");
+// @file: src/routes/tarefa.routes.js
 
-async function tarefaRoutes(fastify, options) {
-  // GET /tarefas - Listar todas as tarefas
-  fastify.get("/tarefas", tarefaController.listarTarefas);
+// Adicionar o import:
+import {
+  listarTarefas,
+  criarTarefa,
+  obterResumo,
+  obterTarefa,
+  atualizarTarefa,
+  concluirTarefa,
+  removerTarefa,
+  listarPendentes  
+} from '../controllers/tarefa.controller.js'
 
-  // POST /tarefas - Criar nova tarefa
-  fastify.post("/tarefas", tarefaController.criarTarefa);
 
-  // GET /tarefas/resumo - Obter resumo (ANTES da rota com :id)
-  fastify.get("/tarefas/resumo", tarefaController.obterResumo);
+export default async function tarefaRoutes(server, options) {
 
-  // GET /tarefas/:id - Obter tarefa por ID
-  fastify.get("/tarefas/:id", tarefaController.obterTarefa);
+  server.get('/tarefas', async (request, reply) => {
+    console.log("Routes: GET /tarefas chamada")
+    listarTarefas(request, reply)
+  })
 
-  // PATCH /tarefas/:id - Atualizar tarefa
-  fastify.patch("/tarefas/:id", tarefaController.atualizarTarefa);
+  server.post('/tarefas', async (request, reply) => {
+    console.log("Routes: POST /tarefas chamada")
+    criarTarefa(request, reply)
+  })
 
-  // DELETE /tarefas/:id - Remover tarefa
-  fastify.delete("/tarefas/:id", tarefaController.removerTarefa);
+  server.get('/tarefas/resumo', async (request, reply) => {
+    console.log("Routes: GET /tarefas/resumo chamada")
+    obterResumo(request, reply)
+  })
 
-  // PATCH /tarefas/:id/concluir - Alternar conclusao
-  fastify.patch("/tarefas/:id/concluir", tarefaController.concluirTarefa);
+  server.get('/tarefas/:id', async (request, reply) => {
+    console.log("Routes: GET /tarefas/:id chamada")
+    obterTarefa(request, reply)
+  })
+  server.get('/tarefas/pendentes', async (request, reply) => {
+  console.log("Routes: GET /tarefas/pendentes chamada")
+  listarPendentes(request, reply)
+})
+  server.patch('/tarefas/:id', async (request, reply) => {
+    console.log("Routes: PATCH /tarefas/:id chamada")
+    atualizarTarefa(request, reply)
+  })
+
+  server.patch('/tarefas/:id/concluir', async (request, reply) => {
+    console.log("Routes: PATCH /tarefas/:id/concluir chamada")
+    concluirTarefa(request, reply)
+  })
+
+  server.delete('/tarefas/:id', async (request, reply) => {
+    console.log("Routes: DELETE /tarefas/:id chamada")
+    removerTarefa(request, reply)
+  })
 }
-
-module.exports = tarefaRoutes;

@@ -1,0 +1,41 @@
+### Respostas da Pratica Final - Validacao:
+
+1. **Verificar se a descricao da tarefa nao esta vazia**
+
+ **Camada**: Controller
+ **Justificativa**: E uma validacao de entrada de dados antes de processar a requisicao.
+
+
+
+2. **Verificar se o ID da tarefa existe**
+
+ **Camada**: Model
+ **Justificativa**: O Model e responsavel por verificar a existencia dos dados.
+
+
+
+3. **Verificar se os parametros de consulta sao validos**
+
+ **Camada**: Controller
+ **Justificativa**: Validacao de parametros da requisicao antes de passar ao Model.
+
+
+
+4. **Converter o parametro id para numero**
+
+ **Camada**: Controller
+ **Justificativa**: Preparacao/conversao de dados da requisicao antes de enviar ao Model.
+
+
+
+5. **Impedir remocao de tarefa concluida**
+
+ **Camada**: Model
+ **Justificativa**: Regra de negocio relacionada aos dados.
+
+
+
+6. **Verificar limite de 10 tarefas pendentes**
+
+ **Camada**: Model
+ **Justificativa**: Regra de negocio que depende do estado atual dos dados.

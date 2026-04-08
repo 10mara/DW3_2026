@@ -1,40 +1,52 @@
-### Listar todas as tarefas
-GET http://localhost:3000/tarefas
+@url = http://localhost:3000
 
-### Listar apenas tarefas concluidas
-GET http://localhost:3000/tarefas?concluida=true
+### Busca todas as tarefas
+GET {{url}}/tarefas
 
-### Listar apenas tarefas pendentes
-GET http://localhost:3000/tarefas?concluida=false
+### Busca uma tarefa específica por ID
+GET {{url}}/tarefas/4
 
-### Buscar tarefas por termo
-GET http://localhost:3000/tarefas?busca=node
-
-### Criar nova tarefa
-POST http://localhost:3000/tarefas
+### Criando uma nova tarefa
+POST {{url}}/tarefas
 Content-Type: application/json
 
 {
-  "titulo": "Nova tarefa",
-  "descricao": "Descricao da tarefa"
+    "id": 4,
+    "descricao": "Tarefa 4",
+    "concluido": false
 }
 
-### Obter tarefa por ID
-GET http://localhost:3000/tarefas/1
-
-### Atualizar tarefa
-PATCH http://localhost:3000/tarefas/1
+### Atualizando parcialmente uma tarefa (PATCH)
+PATCH {{url}}/tarefas/1
 Content-Type: application/json
 
 {
-  "titulo": "Titulo atualizado"
+    "descricao": "Fazer compras no mercado",
+    "concluido": true
 }
 
-### Concluir/Desconcluir tarefa
-PATCH http://localhost:3000/tarefas/1/concluir
+### Excluindo uma tarefa
+DELETE {{url}}/tarefas/1
 
-### Remover tarefa
-DELETE http://localhost:3000/tarefas/1
+### Buscando tarefas por Query String (Filtro)
+GET {{url}}/tarefas?busca=estudar
 
-### Obter resumo
-GET http://localhost:3000/tarefas/resumo
+### Alternar o status da tarefa de ID 1
+PATCH {{url}}/tarefas/3/concluir
+
+### Resumo/Estatísticas das tarefas
+GET {{url}}/tarefas/resumo
+
+### Buscar tarefas pendentes (PRÁTICA FINAL)
+GET {{url}}/tarefas/pendentes
+
+### Forçando erro 404 no NotFoundHandler
+GET {{url}}/batata-frita
+
+### Testar validação (enviando sem descrição)
+POST {{url}}/tarefas
+Content-Type: application/json
+
+{
+    "concluido": false
+}
