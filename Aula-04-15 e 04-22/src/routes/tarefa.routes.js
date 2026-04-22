@@ -1,55 +1,44 @@
 // @file: src/routes/tarefa.routes.js
 
-// Adicionar o import:
-import {
-  listarTarefas,
-  criarTarefa,
-  obterResumo,
-  obterTarefa,
-  atualizarTarefa,
-  concluirTarefa,
-  removerTarefa,
-  listarPendentes  
-} from '../controllers/tarefa.controller.js'
+import controller from '../controllers/tarefa.controller.js'
 
-
-export default async function tarefaRoutes(server, options) {
+export default async function tarefaRoutes(server) {
 
   server.get('/tarefas', async (request, reply) => {
     console.log("Routes: GET /tarefas chamada")
-    listarTarefas(request, reply)
+    controller.listarTarefas(request, reply)
   })
 
   server.post('/tarefas', async (request, reply) => {
     console.log("Routes: POST /tarefas chamada")
-    criarTarefa(request, reply)
+    controller.criarTarefa(request, reply)
   })
 
   server.get('/tarefas/resumo', async (request, reply) => {
     console.log("Routes: GET /tarefas/resumo chamada")
-    obterResumo(request, reply)
-  })
-
-  server.get('/tarefas/:id', async (request, reply) => {
-    console.log("Routes: GET /tarefas/:id chamada")
-    obterTarefa(request, reply)
+    controller.obterResumo(request, reply)
   })
   server.get('/tarefas/pendentes', async (request, reply) => {
   console.log("Routes: GET /tarefas/pendentes chamada")
-  listarPendentes(request, reply)
+  controller.listarPendentes(request, reply)
 })
+  server.get('/tarefas/:id', async (request, reply) => {
+    console.log("Routes: GET /tarefas/:id chamada")
+    controller.obterTarefa(request, reply)
+  })
+ 
   server.patch('/tarefas/:id', async (request, reply) => {
     console.log("Routes: PATCH /tarefas/:id chamada")
-    atualizarTarefa(request, reply)
+    controller.atualizarTarefa(request, reply)
   })
 
   server.patch('/tarefas/:id/concluir', async (request, reply) => {
     console.log("Routes: PATCH /tarefas/:id/concluir chamada")
-    concluirTarefa(request, reply)
+    controller.concluirTarefa(request, reply)
   })
 
   server.delete('/tarefas/:id', async (request, reply) => {
     console.log("Routes: DELETE /tarefas/:id chamada")
-    removerTarefa(request, reply)
+    controller.removerTarefa(request, reply)
   })
 }

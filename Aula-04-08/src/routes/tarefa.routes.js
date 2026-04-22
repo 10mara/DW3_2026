@@ -29,15 +29,15 @@ export default async function tarefaRoutes(server, options) {
     console.log("Routes: GET /tarefas/resumo chamada")
     obterResumo(request, reply)
   })
-
-  server.get('/tarefas/:id', async (request, reply) => {
-    console.log("Routes: GET /tarefas/:id chamada")
-    obterTarefa(request, reply)
-  })
   server.get('/tarefas/pendentes', async (request, reply) => {
   console.log("Routes: GET /tarefas/pendentes chamada")
   listarPendentes(request, reply)
 })
+  server.get('/tarefas/:id', async (request, reply) => {
+    console.log("Routes: GET /tarefas/:id chamada")
+    obterTarefa(request, reply)
+  })
+ 
   server.patch('/tarefas/:id', async (request, reply) => {
     console.log("Routes: PATCH /tarefas/:id chamada")
     atualizarTarefa(request, reply)

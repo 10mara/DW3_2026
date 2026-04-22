@@ -37,11 +37,11 @@ PATCH {{url}}/tarefas/3/concluir
 ### Resumo/Estatísticas das tarefas
 GET {{url}}/tarefas/resumo
 
-### Buscar tarefas pendentes (PRÁTICA FINAL)
-GET {{url}}/tarefas/pendentes
-
 ### Forçando erro 404 no NotFoundHandler
 GET {{url}}/batata-frita
+
+### Buscar tarefas pendentes (PRÁTICA FINAL)
+GET {{url}}/tarefas/pendentes
 
 ### Testar validação (enviando sem descrição)
 POST {{url}}/tarefas

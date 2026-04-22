@@ -1,0 +1,23 @@
+### Respostas da Pratica Final 
+
+1. Classe vs. Instância e a Exportação do new
+
+    Diferença: A Classe é o molde ou projeto (a definição de como uma tarefa deve se comportar). A Instância é o objeto real criado em memória a partir desse molde.
+
+    Por que exportar o new? No Node.js, os módulos são cached. Ao exportar new TarefaModel(), garantimos o padrão Singleton: todos os arquivos que importarem esse model estarão manipulando o mesmo objeto e, consequentemente, o mesmo array this.tarefas. Se exportássemos a classe, cada programador poderia dar um new diferente, criando listas de tarefas separadas e inconsistentes.
+
+2. Injeção de Dependência no Constructor
+
+    O que aconteceria: Se cada método importasse o model diretamente, o código ficaria "acoplado" a uma implementação específica.
+
+    Problema: Ao usar o constructor, facilitamos a manutenção e os testes automatizados. Se precisarmos trocar o TarefaModel por um TarefaMySQLModel, basta alterar o constructor uma única vez ou passar a nova instância por parâmetro, sem precisar editar cada método do controller.
+
+3. Por que as Rotas não viraram Classes?
+
+    As rotas no Fastify funcionam como configurações de infraestrutura. Elas não possuem "estado" (dados que mudam com o tempo) nem comportamentos complexos que precisem ser protegidos pelo encapsulamento. Transformá-las em classe seria adicionar complexidade desnecessária (overengineering), indo contra o princípio de simplicidade do código.
+
+4. O problema do this em Callbacks
+
+    Quando ocorre: Ocorre quando passamos um método de um objeto como referência para outra função (ex: server.get('/rota', controller.listarTarefas)). O JavaScript "esquece" a qual objeto aquela função pertencia, e o this se torna undefined.
+
+    Solução Moderna: O uso de Arrow Functions. Elas não possuem seu próprio this, então elas "capturam" o this do contexto onde foram criadas (a classe/instância), garantindo que a referência ao objeto original nunca seja perdida.
