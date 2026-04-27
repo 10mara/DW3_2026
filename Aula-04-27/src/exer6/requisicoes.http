@@ -1,0 +1,57 @@
+@url = http://localhost:3000
+
+### LISTAR TODOS OS PRODUTOS
+GET {{url}}/produtos
+
+###
+
+### BUSCAR PRODUTO POR ID
+GET {{url}}/produtos/1
+
+###
+
+### CRIAR PRODUTO VÁLIDO
+POST {{url}}/produtos
+Content-Type: application/json
+
+{
+  "nome": "Mouse Gamer",
+  "preco": 150
+}
+
+###
+
+### CRIAR PRODUTO INVÁLIDO (SEM BODY)
+POST {{url}}/produtos
+Content-Type: application/json
+
+###
+
+### CRIAR PRODUTO INVÁLIDO (DADOS ERRADOS)
+POST {{url}}/produtos
+Content-Type: application/json
+
+{
+  "nome": "",
+  "preco": -5
+}
+
+
+### POST VÁLIDO (DEVE FUNCIONAR)
+POST {{url}}/produtos
+Content-Type: application/json
+
+{
+  "nome": "Mouse",
+  "preco": 80
+}
+
+
+### DELETAR PRODUTO POR ID
+DELETE {{url}}/produtos/1
+
+###
+
+
+### LISTAR NOVAMENTE (VERIFICAR MUDANÇAS)
+GET {{url}}/produtos
