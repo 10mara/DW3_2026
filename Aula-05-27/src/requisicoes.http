@@ -1,0 +1,13 @@
+@url = http://localhost:3000
+
+### Buscar produto existente (ID 1)
+GET {{url}}/produtos/1
+
+### Buscar produto existente (ID 2)
+GET {{url}}/produtos/2
+
+### Buscar produto inexistente (erro 404)
+GET {{url}}/produtos/99
+
+### Buscar com ID inválido (erro 400)
+GET {{url}}/produtos/abc
