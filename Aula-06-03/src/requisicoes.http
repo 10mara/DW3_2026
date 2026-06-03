@@ -1,0 +1,49 @@
+### Listar tarefas do banco
+GET http://localhost:3000/laboratorio/tarefas-db
+
+###
+
+### Criar tarefa no banco
+POST http://localhost:3000/laboratorio/tarefas-db
+Content-Type: application/json
+
+{
+  "descricao": " minha primeira tarefa no PostgreSQL"
+}
+
+###
+
+### Listar novamente
+GET http://localhost:3000/laboratorio/tarefas-db
+
+
+### Criar tarefa no banco
+POST http://localhost:3000/laboratorio/tarefas-db
+Content-Type: application/json
+
+{
+  "descricao": " minha terceira tarefa no PostgreSQL"
+}
+
+### Criar tarefa no banco
+POST http://localhost:3000/laboratorio/tarefas-db
+Content-Type: application/json
+
+{
+  "descricao": " minha quinta tarefa no PostgreSQL"
+}
+###
+
+###
+GET http://localhost:3000/laboratorio/tarefas-db/concluidas
+
+###
+
+###
+POST http://localhost:3000/laboratorio/tarefas-db
+Content-Type: application/json
+
+{
+  "descricao": "Tarefa já concluída",
+  "concluido": true
+}

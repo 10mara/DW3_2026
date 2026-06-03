@@ -1,0 +1,3 @@
+
+## 4
+Quando as tarefas são armazenadas em um array, os dados ficam apenas na memória da aplicação. Isso significa que, ao reiniciar ou desligar o servidor, todas as informações são perdidas. Já no PostgreSQL, os dados ficam armazenados de forma permanente no banco de dados, garantindo a persistência das informações. Assim, mesmo após reiniciar a aplicação, as tarefas continuam disponíveis. O banco de dados passa a ser responsável por armazenar e recuperar os dados, enquanto a aplicação apenas os manipula e apresenta ao usuário. Essa mudança torna o sistema mais confiável e próximo de uma aplicação real.
